@@ -2,29 +2,35 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('users', {
+    await queryInterface.createTable('journals', {
       id: {
         type: Sequelize.BIGINT,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true
       },
-      email: {
-        type: Sequelize.STRING,
+      user_id: {
+        type: Sequelize.BIGINT,
         allowNull: false,
-        unique: true
+        references: {
+          model: 'users',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
-      password_hash: {
+      title: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      name: {
-        type: Sequelize.STRING,
-        allowNull: true
+      content: {
+        type: Sequelize.TEXT,
+        allowNull: false
       },
-      role: {
-        type: Sequelize.STRING,
-        allowNull: true
+      is_private: {
+        type: Sequelize.BOOLEAN,
+        allowNull: true,
+        defaultValue: false
       },
       createdAt: {
         allowNull: false,
@@ -40,6 +46,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('users');
+    await queryInterface.dropTable('journals');
   }
 };

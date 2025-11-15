@@ -2,27 +2,34 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('users', {
+    await queryInterface.createTable('bible_passages', {
       id: {
         type: Sequelize.BIGINT,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true
       },
-      email: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        unique: true
-      },
-      password_hash: {
+      book: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      name: {
+      chapter: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
+      verse: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
+      text: {
+        type: Sequelize.TEXT,
+        allowNull: false
+      },
+      translation: {
         type: Sequelize.STRING,
         allowNull: true
       },
-      role: {
+      language: {
         type: Sequelize.STRING,
         allowNull: true
       },
@@ -40,6 +47,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('users');
+    await queryInterface.dropTable('bible_passages');
   }
 };
