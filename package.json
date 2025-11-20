@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-  "build": "tsc -p tsconfig.json",
-  "start": "node build/index.js",
-  "migrate": "sequelize-cli db:migrate",
-  "migrate:undo": "sequelize-cli db:migrate:undo",
-  "seed": "sequelize-cli db:seed:all"
-},
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node build/index.js",
+    "migrate": "sequelize-cli db:migrate",
+    "migrate:undo": "sequelize-cli db:migrate:undo",
+    "seed": "sequelize-cli db:seed:all"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
